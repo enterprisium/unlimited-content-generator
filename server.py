@@ -166,7 +166,7 @@ def generate_sermon(text):
         response = client.chat.completions.create(
             model = "gpt-4-1106-preview",
             messages = [
-            {"role": "system", "content": "你是一位牧師，下面將提供逐字稿，請加上適當的標點符號，整理成有結構且易讀的內容，並且為產出的內容適當的命名，同時為每一段下一個小標題。"},
+            {"role": "system", "content": "You are a pastor. The following will provide a verbatim manuscript. Please add appropriate punctuation marks, organize it into structured and readable content, and name the output content appropriately, and give each paragraph a subtitle."},
             {"role": "user", "content": text}
             ]
         )
@@ -184,7 +184,7 @@ def generate_social_post(text, style):
         response = client.chat.completions.create(
             model = "gpt-4-1106-preview",
             messages = [
-            {"role": "system", "content": f"你是一個厲害的社群媒體經營者，下面將提供牧師的講章，請產生五篇社群貼文，並加上主題標籤。風格：{style}"},
+            {"role": "system", "content": f"You are a powerful social media operator. The pastor’s sermon will be provided below. Please generate five social posts and add hashtags. style：{style}"},
             {"role": "user", "content": text}
             ]
         )
@@ -202,7 +202,7 @@ def generate_clip(text):
         response = client.chat.completions.create(
             model = "gpt-4-1106-preview",
             messages = [
-            {"role": "system", "content": "你是一個厲害的短影音剪輯師，下面將提供一份字幕檔，請根據字幕檔的內容，給予五個你認為可以剪輯成長度為60秒的短影音段落。時間段落指示請依照SRT字幕檔的格式：時間 --> 時間"},
+            {"role": "system", "content": "You are a powerful short video editor. Here is a subtitle file. Based on the content of the subtitle file, please provide five short video paragraphs that you think can be edited into a length of 60 seconds. Please follow the format of SRT subtitle file for time segment indication: time --> time"},
             {"role": "user", "content": text}
             ]
         )
@@ -273,7 +273,7 @@ def generate_social_post_image(prompt, style):
     try:
         response = client.images.generate(
             model="dall-e-3",
-            prompt=f"請針對以下內容，設計適合的社群貼文圖，但不要出現文字。\n 風格：{style}。\n" + prompt,
+            prompt=f"Please design a suitable social post image for the following content, but do not include text. \n style：{style}。\n" + prompt,
             size="1024x1024",
             quality="standard",
             n=1
